@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Vòng Quay May Mắn</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fff3e0;
+}
+
+#wheel {
+    margin: 30px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 10px solid #ff9800;
+    background: conic-gradient(
+        #ffcc80 0deg 90deg,
+        #ffb74d 90deg 180deg,
+        #ffa726 180deg 270deg,
+        #ff9800 270deg 360deg
+    );
+}
+
+button {
+    padding: 14px 28px;
+    font-size: 18px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e64a19;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 VÒNG QUAY MAY MẮN 🎉</h1>
+<p>Chúc bạn may mắn!</p>
+
+<div id="wheel"></div>
+
+<button onclick="quay()">🎡 QUAY NGAY</button>
+
+<p id="ketqua"></p>
+
+<script>
+const phanThuong = [
+    "10.000đ",
+    "20.000đ",
+    "50.000đ",
+    "100.000đ"
+];
+
+function quay() {
+    if (localStorage.getItem("da_quay")) {
+        alert("❌ Bạn đã quay rồi, mỗi người chỉ được 1 lần!");
+        return;
+    }
+
+    const trung = phanThuong[Math.floor(Math.random() * phanThuong.length)];
+
+    document.getElementById("ketqua").innerHTML =
+        "🎁 Chúc mừng bạn trúng: <b>" + trung + "</b>";
+
+    localStorage.setItem("da_quay", "true");
+}
+</script>
+
+</body>
+</html>
